@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignSutra - Indian Sign Language Detection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --saffron: #ff9933;
+      --green: #138808;
+      --blue: #000080;
+      --gold: #d4a017;
+      --white: #ffffff;
+      --bg-color: #f9f5e7;
+      --text-color: #2c2c2c;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--white);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--saffron);
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-menu li a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-menu li a:hover {
+      color: var(--green);
+    }
+
+    .hero-section {
+      display: flex;
+      align-items: center;
+      min-height: 100vh;
+      padding: 6rem 2rem 2rem;
+      background: linear-gradient(to right, var(--saffron), var(--bg-color));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/indian-pattern.png') repeat;
+      opacity: 0.1;
+      z-index: 0;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content {
+      flex: 1;
+      animation: slideInLeft 1s ease-out;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      color: var(--blue);
+      margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: var(--green);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--saffron);
+      transform: translateY(-3px);
+    }
+
+    .hero-image {
+      flex: 1;
+      text-align: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .features-section {
+      padding: 4rem 2rem;
+      background: var(--white);
+    }
+
+    .features-container {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: var(--bg-color);
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      border: 2px solid var(--gold);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-card h3 {
+      color: var(--blue);
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background: var(--blue);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="nav-logo">SignSutra</div>
+      <ul class="nav-menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/index">Upload</a></li>
+        <li><a href="/live">Live Detection</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1>Indian Sign Language Detection</h1>
+        <p>Empower communication with real-time Indian Sign Language recognition and analysis.</p>
+        <a href="/index" class="btn-primary">Start Detecting</a>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.livemint.com/img/2020/12/20/600x338/BOLlanguage_1608476832278_1608476840355.jpg" alt="Indian Sign Language">
+      </div>
+    </div>
+  </section>
+
+  <section class="features-section">
+    <div class="features-container">
+      <div class="feature-card">
+        <h3>Real-Time Detection</h3>
+        <p>Monitor live feeds to recognize Indian Sign Language gestures instantly.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Video Analysis</h3>
+        <p>Analyze uploaded videos for sign language gestures and contextual insights.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Instant Alerts</h3>
+        <p>Receive email notifications with detection results and detailed reports.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 SignSutra. All rights reserved.</p>
+  </footer>
+</body>
+</html>

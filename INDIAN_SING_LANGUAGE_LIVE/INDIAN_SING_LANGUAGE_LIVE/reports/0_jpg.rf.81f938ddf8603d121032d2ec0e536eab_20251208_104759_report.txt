@@ -1,0 +1,16 @@
+Indian Sign Language Detection Report
+
+Detected Signs: X
+
+Timestamp: 20251208_104759
+
+Gemini Analysis: I am sorry, but I am unable to access local files or specific URLs like the one you provided (uploads\0_jpg.rf.81f938ddf8603d121032d2ec0e536eab.jpg). My capabilities are limited to processing information that is directly provided to me or accessible via public web links.
+
+Therefore, I cannot analyze the image for Indian Sign Language gestures or its context.
+
+**To help me analyze the image, please consider the following:**
+
+*   **Describe the image in detail:** Tell me what you see in the image. For example, "There is a person signing with their right hand, and their palm is facing forward. They are making a circular motion."
+*   **Upload the image again with a public link:** If possible, try uploading the image to a publicly accessible image hosting service (like Imgur, Google Photos with sharing enabled, etc.) and provide me with that URL.
+
+Once you provide the image in a way I can access, I will do my best to analyze it for Indian Sign Language gestures and provide context based on common signs and visual cues.

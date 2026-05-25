@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignSutra - Upload</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --saffron: #ff9933;
+      --green: #138808;
+      --blue: #000080;
+      --gold: #d4a017;
+      --white: #ffffff;
+      --bg-color: #f9f5e7;
+      --text-color: #2c2c2c;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: var(--white);
+      padding: 1.5rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      color: var(--saffron);
+      text-align: center;
+      font-size: 2.5rem;
+    }
+
+    main {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .upload-container {
+      max-width: 600px;
+      width: 100%;
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      border: 2px solid var(--gold);
+    }
+
+    form {
+      margin-top: 1.5rem;
+    }
+
+    label {
+      display: inline-block;
+      background: var(--blue);
+      color: var(--white);
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    label:hover {
+      background: var(--saffron);
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    button {
+      background: var(--green);
+      color: var(--white);
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: var(--saffron);
+    }
+
+    #preview-container {
+      margin-top: 1.5rem;
+    }
+
+    #selected-file, #selected-video {
+      max-width: 100%;
+      border-radius: 8px;
+      display: none;
+    }
+
+    footer {
+      background: var(--blue);
+      color: var(--white);
+      text-align: center;
+      padding: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SignSutra - Upload</h1>
+  </header>
+
+  <main>
+    <div class="upload-container">
+      <h2>Upload Image or Video</h2>
+      <form action="/process_file" method="post" enctype="multipart/form-data">
+        <label for="file">Choose File</label>
+        <input type="file" id="file" name="file" accept="image/*,video/*" onchange="displayFile(this)" required>
+        <button type="submit">Analyze</button>
+      </form>
+      <div id="preview-container">
+        <img id="selected-file" alt="Selected File Preview">
+        <video id="selected-video" controls></video>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 SignSutra. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function displayFile(input) {
+      const file = input.files[0];
+      const img = document.getElementById('selected-file');
+      const video = document.getElementById('selected-video');
+
+      img.style.display = 'none';
+      video.style.display = 'none';
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          if (file.type.startsWith('image/')) {
+            img.src = e.target.result;
+            img.style.display = 'block';
+          } else if (file.type.startsWith('video/')) {
+            video.src = e.target.result;
+            video.style.display = 'block';
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  </script>
+</body>
+</html>

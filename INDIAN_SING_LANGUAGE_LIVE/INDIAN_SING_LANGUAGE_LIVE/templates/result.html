@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignSutra - Detection Result</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --saffron: #ff9933;
+      --green: #138808;
+      --blue: #000080;
+      --gold: #d4a017;
+      --white: #ffffff;
+      --bg-color: #f9f5e7;
+      --text-color: #2c2c2c;
+      --error-color: #d00000;
+      --success-color: #138808;
+      --border-color: #e0e0e0;
+      --shadow-color: rgba(0, 0, 0, 0.05);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .result-container {
+      max-width: 800px;
+      width: 100%;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      border: 2px solid var(--gold);
+    }
+
+    h1 {
+      color: var(--saffron);
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      color: var(--blue);
+      font-size: 1.8rem;
+      margin: 1.5rem 0 1rem;
+    }
+
+    .error-message {
+      color: var(--error-color);
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .output-media {
+      width: 100%;
+      max-width: 600px;
+      margin: 1.5rem auto;
+      border-radius: 8px;
+      display: block;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0;
+    }
+
+    li {
+      background: var(--bg-color);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      transition: transform 0.2s ease;
+    }
+
+    li:hover {
+      transform: translateY(-2px);
+    }
+
+    .download-button {
+      display: inline-flex;
+      align-items: center;
+      background: var(--success-color);
+      color: var(--white);
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 1rem;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .download-button:hover {
+      background: var(--saffron);
+      transform: translateY(-2px);
+    }
+
+    .download-button i {
+      margin-right: 0.5rem;
+    }
+
+    .gemini-analysis {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, var(--bg-color), #f0ead6);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 8px var(--shadow-color);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .gemini-analysis:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .gemini-analysis h3 {
+      color: var(--blue);
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .gemini-analysis h3 i {
+      margin-right: 0.5rem;
+      color: var(--saffron);
+    }
+
+    .gemini-analysis ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .gemini-analysis li {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-color);
+      background: var(--white);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--saffron);
+      margin-bottom: 1rem;
+      position: relative;
+      transition: background 0.3s ease;
+    }
+
+    .gemini-analysis li:before {
+      content: '•';
+      color: var(--saffron);
+      font-size: 1.5rem;
+      position: absolute;
+      left: 0.5rem;
+      top: 1.1rem;
+    }
+
+    .gemini-analysis li:hover {
+      background: #f9f9f9;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="result-container">
+    <h1>SignSutra - Detection Result</h1>
+
+    {% if error %}
+      <p class="error-message">{{ error }}</p>
+    {% else %}
+      <h2>Analyzed Output</h2>
+      {% if is_video %}
+        <video class="output-media" controls autoplay>
+          <source src="{{ url_for('static', filename=output_path) }}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      {% else %}
+        <img class="output-media" src="{{ url_for('static', filename=output_path) }}" alt="Analyzed Image">
+      {% endif %}
+
+      <h2>Detected Signs</h2>
+      <ul>
+        {% for sign in sign_list %}
+          <li>{{ sign }}</li>
+        {% endfor %}
+      </ul>
+
+      <div class="gemini-analysis">
+        <h3><i class="fas fa-brain"></i> Gemini Analysis</h3>
+        <ul>
+          {% for analysis_point in gemini_analysis.split('\n') %}
+            {% if analysis_point.strip() %}
+              <li>{{ analysis_point }}</li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+
+      <a class="download-button" href="{{ url_for('download_report', filename=report_filename) }}">
+        <i class="fas fa-download"></i> Download Report
+      </a>
+    {% endif %}
+  </div>
+</body>
+</html>

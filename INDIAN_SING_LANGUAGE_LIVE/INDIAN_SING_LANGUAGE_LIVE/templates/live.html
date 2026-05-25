@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignSutra - Live Detection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --saffron: #ff9933;
+      --green: #138808;
+      --blue: #000080;
+      --gold: #d4a017;
+      --white: #ffffff;
+      --bg-color: #f9f5e7;
+      --text-color: #2c2c2c;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: var(--white);
+      padding: 1.5rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      color: var(--saffron);
+      text-align: center;
+      font-size: 2.5rem;
+    }
+
+    main {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .live-container {
+      max-width: 800px;
+      width: 100%;
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      border: 2px solid var(--gold);
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      background: var(--blue);
+      color: var(--white);
+      text-align: center;
+      padding: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SignSutra - Live Detection</h1>
+  </header>
+
+  <main>
+    <div class="live-container">
+      <h2>Live Camera Feed</h2>
+      <img src="{{ url_for('video_feed') }}" alt="Live Detection Feed">
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 SignSutra. All rights reserved.</p>
+  </footer>
+</body>
+</html>

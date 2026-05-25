@@ -1,0 +1,7 @@
+Indian Sign Language Detection Report
+
+Detected Signs: U
+
+Timestamp: 20251205_105957
+
+Gemini Analysis: Gemini analysis unavailable due to API quota limits.

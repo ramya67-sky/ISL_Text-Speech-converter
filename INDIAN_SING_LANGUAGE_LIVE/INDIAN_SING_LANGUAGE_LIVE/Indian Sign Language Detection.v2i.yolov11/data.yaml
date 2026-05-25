@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 35
+names: ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'c']
+
+roboflow:
+  workspace: niladri-basu-roy-qnrm4
+  project: indian-sign-language-detection
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/niladri-basu-roy-qnrm4/indian-sign-language-detection/dataset/2
